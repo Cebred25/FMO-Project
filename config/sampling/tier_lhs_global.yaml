@@ -1,0 +1,6 @@
+tier: lhs_global
+n: 6000
+seed: 20260730
+site_energy_sigma_cm1: 60.0
+coupling_relative_sigma: null    # set by 01_calibrate_coupling_sigma.py
+gamma_deph: {mode: log_uniform, log10_range: [-1.0, 3.0]}
