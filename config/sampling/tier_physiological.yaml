@@ -1,0 +1,47 @@
+# config/sampling/tier_physiological.yaml
+#
+# Local neighbourhood of the wild type. Purpose is sensitivity analysis and the
+# basin-radius / wild-type-percentile comparison — NOT landscape coverage.
+# Widths here are meant to be defensible as biologically realistic, so each one
+# needs a citation or an explicit EXPLORATORY tag.
+
+tier: physiological
+purpose: >
+  Sensitivity of transport to disorder at measured magnitudes, and the
+  reference distribution against which the wild-type basin radius is ranked.
+
+n: 2000
+seed: 20260729
+include_baseline: true      # sample_id 0 is the UNPERTURBED wild type
+
+site_energies:
+  distribution: normal
+  mode: additive            # additive, not multiplicative: site 3 sits at 0
+  sigma_cm1: 25.0           # NEEDS CITATION: derived from the FMO inhomogeneous
+                            # linewidth via sigma = FWHM / 2.355. Record the
+                            # FWHM you used and its source in the README.
+  correlated: false         # independent per site; flag if you later test
+                            # correlated disorder (Olbrich 2011 suggests weak)
+
+couplings:
+  distribution: normal
+  mode: multiplicative
+  relative_sigma: null      # set by 01_calibrate_coupling_sigma.py from the
+                            # element-wise spread across published Hamiltonians
+
+dephasing:
+  mode: log_normal
+  center_cm1: 200.0         # LOCATED by 00_validate.py, not assumed
+  log10_sigma: 0.3          # ~factor-of-2 spread; deliberately narrow so the
+                            # tier stays inside the ENAQT region
+
+conditions:
+  initial_sites: [0, 5]     # sites 1 and 6
+  trap_indices: [2, 3]      # sites 3 and 4
+
+basin:
+  # used by analysis/basin.py; lives here because it is a property of this tier
+  eta_threshold: 0.90
+  eps_grid: [0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0, 1.5, 2.0]
+  n_per_shell: 64
+  metric: z_scored          # isotropic in per-dimension z-scored space
