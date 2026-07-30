@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "fmo-landscape: FMO excitonic transport landscape analysis"
+authors:
+  - family-names: Brown
+    given-names: Connor
+    orcid: "https://orcid.org/0009-0007-2212-5081"
+    affiliation: Florida State University
+license: MIT
+repository-code: "https://github.com/<you>/fmo-landscape"
