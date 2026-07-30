@@ -1,0 +1,23 @@
+baseline_hamiltonian: cho2005
+
+sites:
+  n: 7
+  trap_index: 2          # 0-based; site 3, lowest energy, RC-proximal
+  trap_index_alt: 3
+  initial_sites: [0, 5]
+
+rates:
+  k_trap_ps: 1.0         # Mohseni et al. 2014
+  k_loss_ps: 0.001       # 1 ns exciton lifetime, ibid.
+
+dephasing:
+  log10_range_cm1: [-1.0, 3.0]
+  physiological_cm1: 200.0   # LOCATED by 00_validate.py sweep, not assumed
+
+integration:
+  t_max_ps: 5000.0
+  n_grid: 3000
+
+tolerances:
+  closure_atol: 1.0e-9
+  eta_bounds: [0.0, 1.0]
