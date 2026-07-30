@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.DS_Store
+
+# outputs are regenerable — do not commit
+data/processed/*
+!data/processed/.gitkeep
+figures/*
+!figures/.gitkeep
+
+# but DO commit the validation report and small summary tables
+!data/processed/validation_report.json
+!data/processed/*_summary.csv
